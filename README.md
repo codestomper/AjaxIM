@@ -20,10 +20,10 @@ Install `Node.js` (known to work with v0.1.98+):
 Install Node Package Manager (`npm`):
     See instructions at http://github.com/isaacs/npm.
 
-Install `Connect`:
+Install `Connect` ([github](http://github.com/extjs/connect)):
     npm install connect
 
-Install `Express.js`:
+Install `Express.js` ([github](http://github.com/visionmedia/express)):
     npm install express
 
 Compile the daemon add-on if you plan on letting the server daemonize itself:

@@ -332,7 +332,7 @@ ul#imjs-bar {
     }
     
     ul#imjs-bar > li#imjs-friends.imjs-not-connected, 
-    ul#imjs-bar > li#imjs-friends.not-connected:hover {
+    ul#imjs-bar > li#imjs-friends.imjs-not-connected:hover {
         width: 10px;
         background-image: url(images/error.png);
         background-position: center;
@@ -352,7 +352,75 @@ ul#imjs-bar {
                 font-weight: 700;
             }
     /* [end] Friends list button */
+    
+    /* [begin] Status panel button */
+    ul#imjs-bar > li#imjs-status {
+        float: right;
+        width: 10px;
+    }
+    /* [end] Status panel button */
 /* [end] Messenger bar */
+
+/* [begin] Status panel */
+div#imjs-status-panel {
+    background: #fff;
+    width: 200px;
+    /*right: auto;
+    left: -1px;*/
+    z-index: 100;
+}
+
+    div#imjs-status-panel div.imjs-header {
+        width: 190px;
+    }
+       
+        div#imjs-status-panel a.imjs-minimize {
+            width: 194px;
+        }
+        
+        div#imjs-status-panel a.imjs-minimize:active {
+            outline: 0;
+        }
+
+textarea#imjs-away-message {
+    resize: none;
+    width: 168px;
+    height: 60px;
+    margin: 15px 10px 10px;
+    padding: 5px;
+    border: 1px solid #cfceca;
+    font: 12px/18px Helvetica Neue, Helvetica, Arial, Calibri, Tahoma, Verdana, sans-serif;
+}
+
+    textarea#imjs-away-message:focus {
+        outline: 2px solid #cfceca;
+    }
+
+div#imjs-status-panel > a.imjs-button {
+    display: block;
+    float: left;
+    background: #f0efed url(images/w.png) top repeat-x;
+    border: 1px solid;
+    border-color: #cfceca #f0f0f0 #cfceca #cfceca;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 11px;
+}
+
+    div#imjs-status-panel > a#imjs-button-available {
+        margin-left: 10px;
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+    }
+    
+    div#imjs-status-panel > a#imjs-button-offline {
+        border-right-color: #cfceca;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+    }
+/* [end] Status panel */
 
 /* [begin] Friends list */
 div#imjs-friends-panel {
@@ -457,85 +525,3 @@ div#imjs-friends-panel form, div#imjs-friends-panel form p {
         color: #aaa;
     }
 /* [end] Friends list */
-
-/* [begin] Login/Registration Forms */
-div#imjs-lr form {
-    background: #F0EFED url(images/w.png) repeat-x;
-    border: 1px solid #cfceca;
-    max-width: 220px;
-    padding: 5px 5px 10px 8px;
-    overflow: auto;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-}
-
-    div#imjs-lr .error {
-        font: 700 12px/18px Helvetica Neue, Helvetica, Arial, Calibri, Tahoma, Verdana, sans-serif;
-        color: #ff0000;
-    }
-
-    div#imjs-lr form fieldset {
-        border: 0;
-        padding: 0;
-        margin: 0;
-    }
-    
-    div#imjs-lr form h2 {
-        font: 700 20px/24px Helvetica Neue, Helvetica, Arial, Calibri, Tahoma, Verdana, sans-serif;
-        margin: 0;
-        padding: 7px 0 0 2px;
-        color: #555;
-        text-shadow: 0 1px 0px #fff;
-    }
-
-    div#imjs-lr form label {
-        display: block;
-        font: 700 12px/14px Helvetica Neue, Helvetica, Arial, Calibri, Tahoma, Verdana, sans-serif;
-        color: #7B7A79;
-    }
-    
-    div#imjs-lr form input {
-        width: 200px;
-    }
-    
-        div#imjs-lr form input.imjs-lr-error, div#imjs-lr form input.imjs-lr-error:focus {
-            margin: -1px;
-            border: 2px solid #ff1111;
-        }
-    
-    div#imjs-lr form button {
-        float: right;
-        background: #f4f3f1;
-        outline: 0;
-    }
-    
-    div#imjs-lr form input, div#imjs-lr form button {
-        border: 1px solid #ddd;
-        color: #000;
-        padding: 4px 3px;
-        font: 16px/20px Helvetica Neue, Helvetica, Arial, Calibri, Tahoma, Verdana, sans-serif;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        margin: 0;
-    }
-    
-        div#imjs-lr form p {
-            padding-left: 2px;
-            overflow: visible;
-        }
-        
-        div#imjs-lr form input:focus, div#imjs-lr form button:focus {
-            position: relative;
-            border: 2px solid #999;
-            margin: -1px;
-        }
-    
-    p.imjs-submit {
-        width: 207px;
-        overflow: visible;
-    }
-
-    form#imjs-login {
-        margin-bottom: 10px;
-    }
-/* [end] Login/Registration Forms */

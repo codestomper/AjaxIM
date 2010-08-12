@@ -234,6 +234,9 @@ $.extend(AjaxIM.prototype, {
                 msglog = chatbox.find('.imjs-msglog').empty();
             chatbox.data('lastDateStamp', null).css('display', 'none');
 
+            if(typeof convo == 'string')
+                convo = self.chatstore[username] = JSON.parse(convo);
+
             // Restore all messages, date stamps, and errors
             msglog.html(convo.join(''));
 
@@ -1207,9 +1210,8 @@ AjaxIM.request = function(url, type, data, successFunc, failureFunc) {
         type: type,
         cache: false,
         timeout: 299000,
-        //callback: 'jsonp' + (new Date()).getTime(),
         success: function(json, textStatus, xhr) {
-            if(xhr.status == '0') return;
+            if('status' in xhr && xhr.status == '0') return;
             _dbg(json);
             successFunc(json);
         },
