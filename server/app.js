@@ -58,7 +58,7 @@ var app = express.createServer(
     connect.cookieDecoder(),
     connect.bodyDecoder(),
     require('./middleware/im')({
-        lifetime: (15).minutes,
+        maxAge: (15).minutes,
         reapInterval: (1).minute,
         authentication: require('./libs/authentication/' + AUTH_LIBRARY)
     })

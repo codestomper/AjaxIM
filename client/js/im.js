@@ -80,7 +80,7 @@ AjaxIM = function(options, actions) {
         });
 
         $('.imjs-chatbox .imjs-minimize').live('click', function() {
-            $(this).parents('.imjs-tab').click();
+            $(this).parents('.imjs-selected').click();
         });
 
         // Setup message sending for all chatboxes
@@ -828,6 +828,7 @@ $.extend(AjaxIM.prototype, {
         if(!this.statuses[s])
             return;
 
+        // check if selected before writing over the class!
         $('#imjs-friends').attr('class', 'imjs-' + s);
 
         $(this).trigger('changingStatus', [s, message]);
@@ -892,13 +893,15 @@ $.extend(AjaxIM.prototype, {
 
         // Set up the friends list actions
         $(document).click(function(e) {
-            if(e.target.id == 'imjs-friends' ||
-                $(e.target).parents('#imjs-friends').length) {
+            if(~['imjs-friends', 'imjs-status'].indexOf(e.target.id) ||
+                $(e.target).parents('#imjs-friends, #imjs-status').length) {
                 return;
             }
 
             if($('#imjs-friends').data('state') == 'active')
                 self.activateTab.call(self, $('#imjs-friends'));
+            else if($('#imjs-status').data('state') == 'active')
+                self.activateTab.call(self, $('#imjs-status'));
         });
         $('#imjs-friends')
             .data('state', 'minimized')
@@ -930,7 +933,16 @@ $.extend(AjaxIM.prototype, {
                     $('.imjs-tooltip').css('display', '');
                 }
             });
-        $('#imjs-friends-panel').css('display', 'none');
+            
+        $('#imjs-status')
+            .data('state', 'minimized')
+            .click(function(e) {
+                if(e.target.id != 'imjs-status-panel' &&
+                   !$(e.target).parents('#imjs-status-panel').length)
+                   self.activateTab.call(self, $(this));
+            })
+            
+        $('#imjs-friends-panel, #imjs-status-panel').css('display', 'none');
     },
 
     // === {{{AjaxIM.}}}**{{{activateTab()}}}** ===
@@ -949,6 +961,7 @@ $.extend(AjaxIM.prototype, {
                 $('#imjs-bar > li')
                     .not(tab)
                     .not('#imjs-friends, .imjs-scroll, .imjs-default')
+                    .add(tab.attr('id') == 'imjs-status' ? '#imjs-friends' : '')
                     .removeClass('imjs-selected')
                     .each(function() {
                         var self = $(this);
@@ -959,6 +972,12 @@ $.extend(AjaxIM.prototype, {
                                 chatbox.css('display', 'none');
                         }
                     });
+            } else {
+                $('#imjs-status')
+                    .removeClass('imjs-selected')
+                    .data('state', 'minimized')
+                    .find('.imjs-chatbox')
+                    .css('display', 'none');
             }
 
             if(chatbox && chatbox.css('display') == 'none')

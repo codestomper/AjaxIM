@@ -37,9 +37,9 @@ Hub.prototype.reap = function(ms) {
     for(var i = 0, len = sids.length; i < len; ++i) {
         var sid = sids[i], sess = this.sessions[sid];
         if(sess.lastAccess < threshold) {
-            sess.signoff((function() {
-                delete this.sessions[sid];
-            }).bind(this));
+            this.events.emit('update', new packages.Offline(sess));
+            sess.send({type: 'goodbye'});
+            delete this.sessions[sid];
         }
     }
 };

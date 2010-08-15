@@ -3,18 +3,16 @@
     <li id="imjs-status">
         <span class="imjs-tab-text"><strong>&bull;</strong></span>
         <div id="imjs-status-panel" class="imjs-chatbox">
-            <div class="imjs-header">
-                <span>Status</span>
-                <a href="#" class="imjs-minimize">_</a>
+            <div id="imjs-away-message">
+                <textarea id="imjs-away-message-text"></textarea>
             </div>
-            <textarea id="imjs-away-message"></textarea>
-            <a href="#" id="imjs-button-available" class="imjs-button"><span>&bull;</span> Online</a>
-            <a href="#" id="imjs-button-away" class="imjs-button"><span>&bull;</span> Away</a>
-            <a href="#" id="imjs-button-offline" class="imjs-button"><span>&bull;</span> Offline</a>
+            <a href="#" id="imjs-button-away" class="imjs-button"><span>&bull;</span></a>
+            <a href="#" id="imjs-button-offline" class="imjs-button"><span>&bull;</span></a>
+            <a href="#" id="imjs-button-available" class="imjs-button"><span>&bull;</span></a>
         </div>
     </li>
     <li id="imjs-friends" class="imjs-not-connected">
-        <span class="imjs-tab-text"><strong>&bull;</strong> Friends <span>(<span>0</span>)</span></span>
+        <span class="imjs-tab-text">Friends <span>(<span>0</span>)</span></span>
         <div id="imjs-friends-panel" class="imjs-chatbox">
             <div class="imjs-header">
                 <span>{username}</span>
